@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IconTech · Official Zoho Partner & Digital Solutions</title>
+  <meta name="description" content="IconTech – Official Zoho Partner in Africa. ERP consulting, CRM implementation, business automation, and custom software solutions." />
+  <link rel="icon" href="https://www.obana.africa/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .partner-badge {
+      background: linear-gradient(135deg, #0a2c3d 0%, #1a4b63 100%);
+    }
+    .service-card {
+      transition: all 0.2s ease;
+      border: 1px solid #eef2f6;
+    }
+    .service-card:hover {
+      border-color: #1a4b63;
+      box-shadow: 0 20px 30px -15px rgba(26,75,99,0.15);
+    }
+    .table-header {
+      background-color: #f8fafc;
+      color: #0a2c3d;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .table-row {
+      border-bottom: 1px solid #eef2f6;
+    }
+    .table-row:hover {
+      background-color: #f9fcff;
+    }
+    .signup-btn {
+      background-color: #1a4b63;
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .signup-btn:hover {
+      background-color: #0f384d;
+      text-decoration: none;
+    }
+    .badge-zoho {
+      background-color: #e6f0f5;
+      color: #1a4b63;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+  <!-- ===== HEADER (corporate, minimalist) ===== -->
+  <header class="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="/" class="text-2xl font-bold text-[#1a4b63] tracking-tight">Icon<span class="font-light text-gray-600">Tech</span></a>
+        <span class="hidden md:inline-block bg-[#e6f0f5] text-[#1a4b63] text-xs font-semibold px-3 py-1 rounded-full">Zoho Authorized Partner</span>
+      </div>
+      
+      <!-- desktop nav -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700">
+        <a href="#about" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] pb-1 transition">About</a>
+        <a href="#services" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] pb-1 transition">Services</a>
+        <a href="#zoho-solutions" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] pb-1 transition">Zoho Solutions</a>
+        <a href="#contact" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] pb-1 transition">Contact</a>
+        <a href="#zoho-solutions" class="ml-4 bg-[#1a4b63] text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-[#0f384d] transition shadow-sm">
+          Partner Portal
+        </a>
+      </nav>
+
+      <!-- mobile button -->
+      <button id="mobile-menu-btn" class="md:hidden text-[#1a4b63]">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- mobile drawer -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/30 z-50 hidden">
+      <div class="absolute top-0 left-0 w-4/5 max-w-xs h-full bg-white shadow-xl">
+        <div class="flex justify-between items-center px-6 py-5 border-b">
+          <span class="text-xl font-bold text-[#1a4b63]">IconTech</span>
+          <button id="close-mobile-menu" class="text-gray-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <nav class="flex flex-col space-y-4 px-6 py-8">
+          <a href="#about" class="text-gray-700 hover:text-[#1a4b63] py-2">About</a>
+          <a href="#services" class="text-gray-700 hover:text-[#1a4b63] py-2">Services</a>
+          <a href="#zoho-solutions" class="text-gray-700 hover:text-[#1a4b63] py-2">Zoho Solutions</a>
+          <a href="#contact" class="text-gray-700 hover:text-[#1a4b63] py-2">Contact</a>
+          <a href="#zoho-solutions" class="bg-[#1a4b63] text-white px-4 py-3 rounded-md text-center mt-4">Partner Portal</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const closeBtn = document.getElementById('close-mobile-menu');
+      if(btn) btn.onclick = () => menu.classList.remove('hidden');
+      if(closeBtn) closeBtn.onclick = () => menu.classList.add('hidden');
+      menu?.addEventListener('click', (e) => { if(e.target === menu) menu.classList.add('hidden'); });
+    })();
+  </script>
+
+  <!-- ===== HERO (professional, B2B tone) ===== -->
+  <section class="pt-36 pb-24 bg-gradient-to-br from-[#f0f7fc] to-white px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <img src="https://res.cloudinary.com/dfmigbgri/image/upload/v1757406853/authorized-badge-new_gwgqcw.png" alt="Zoho Partner" class="h-12 w-auto">
+            <span class="bg-[#1a4b63] text-white text-sm px-4 py-1.5 rounded-full font-medium">Official Partner since 2020</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            Digital transformation<br><span class="text-[#1a4b63]">for African businesses</span>
+          </h1>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            IconTech provides expert Zoho implementation, ERP consulting, and custom software solutions. 
+            We don't just sell licenses — we architect systems that scale.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#zoho-solutions" class="bg-[#1a4b63] text-white px-8 py-4 rounded-md font-semibold hover:bg-[#0f384d] transition shadow-lg">
+              Explore Zoho solutions
+            </a>
+            <a href="#contact" class="border-2 border-[#1a4b63] text-[#1a4b63] px-8 py-4 rounded-md font-semibold hover:bg-[#1a4b63] hover:text-white transition">
+              Talk to an expert
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block bg-[#e6f0f5] p-8 rounded-2xl">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-5 rounded-xl shadow-sm">
+              <p class="text-3xl font-bold text-[#1a4b63]">50+</p>
+              <p class="text-sm text-gray-600">Zoho implementations</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm">
+              <p class="text-3xl font-bold text-[#1a4b63]">100%</p>
+              <p class="text-sm text-gray-600">Certified consultants</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm col-span-2">
+              <p class="text-lg font-semibold text-gray-800">End-to-end support</p>
+              <p class="text-sm text-gray-500">From discovery to training & beyond</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT (IconTech focused) ===== -->
+  <section id="about" class="py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-[#1a4b63] font-semibold text-sm tracking-wider uppercase">About us</span>
+      <h2 class="text-4xl font-bold text-gray-900 mt-3 mb-8">Technology partners, not just vendors</h2>
+      <p class="text-lg text-gray-600 leading-relaxed mb-12">
+        IconTech is the technology division of Icon Holding. We specialize in Zoho ecosystem implementation, 
+        custom ERP development, and business process automation. Our team holds advanced Zoho certifications 
+        and has deployed solutions for SMEs and enterprises across Africa.
+      </p>
+      <div class="grid md:grid-cols-3 gap-8 text-left">
+        <div class="p-6 border border-gray-100 rounded-xl">
+          <div class="w-10 h-10 bg-[#e6f0f5] rounded-lg flex items-center justify-center text-[#1a4b63] font-bold text-xl mb-4">01</div>
+          <h3 class="font-bold text-lg mb-2">Zoho Premium Partner</h3>
+          <p class="text-gray-500 text-sm">Direct access to Zoho India, priority support, and exclusive partner benefits.</p>
+        </div>
+        <div class="p-6 border border-gray-100 rounded-xl">
+          <div class="w-10 h-10 bg-[#e6f0f5] rounded-lg flex items-center justify-center text-[#1a4b63] font-bold text-xl mb-4">02</div>
+          <h3 class="font-bold text-lg mb-2">Custom Development</h3>
+          <p class="text-gray-500 text-sm">Delphi, .NET, Python – we build integrations and extensions tailored to you.</p>
+        </div>
+        <div class="p-6 border border-gray-100 rounded-xl">
+          <div class="w-10 h-10 bg-[#e6f0f5] rounded-lg flex items-center justify-center text-[#1a4b63] font-bold text-xl mb-4">03</div>
+          <h3 class="font-bold text-lg mb-2">African expertise</h3>
+          <p class="text-gray-500 text-sm">We understand local business challenges, tax regulations, and market dynamics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES (non-Zoho & consulting) ===== -->
+  <section id="services" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-[#1a4b63] font-semibold text-sm tracking-wider uppercase">Our expertise</span>
+        <h2 class="text-4xl font-bold text-gray-900 mt-3">Beyond Zoho – full-stack digital consulting</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl service-card">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">ERP advisory</h3>
+          <p class="text-gray-500 mb-4">We assess your operations and recommend the perfect ERP fit — Zoho, Odoo, or custom-built.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start">✓ Process mapping</li>
+            <li class="flex items-start">✓ Vendor selection</li>
+            <li class="flex items-start">✓ Migration strategy</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-xl service-card">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Custom development</h3>
+          <p class="text-gray-500 mb-4">Legacy system integration, mobile apps, APIs, and bespoke modules for your unique needs.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start">✓ .NET / Python / PHP</li>
+            <li class="flex items-start">✓ Database optimization</li>
+            <li class="flex items-start">✓ Third-party integrations</li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-xl service-card">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Digital transformation</h3>
+          <p class="text-gray-500 mb-4">End-to-end consulting to modernize workflows, automate reporting, and reduce manual work.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start">✓ Workflow automation</li>
+            <li class="flex items-start">✓ BI & dashboards</li>
+            <li class="flex items-start">✓ Change management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ZOHO SOLUTIONS TABLE (professional, corporate) ===== -->
+  <section id="zoho-solutions" class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-[#1a4b63] font-semibold text-sm tracking-wider uppercase">Zoho ecosystem</span>
+        <h2 class="text-4xl font-bold text-gray-900 mt-3 mb-4">50+ Zoho solutions — direct partner signup</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">As an authorized Zoho partner, we provide instant license provisioning, implementation, and ongoing support. Click any service to sign up through our partner portal.</p>
+      </div>
+
+      <!-- table (corporate, clean, scrollable on mobile) -->
+      <div class="overflow-x-auto border border-gray-200 rounded-xl shadow-sm">
+        <table class="w-full text-sm">
+          <thead class="table-header">
+            <tr>
+              <th class="px-6 py-4 text-left">#</th>
+              <th class="px-6 py-4 text-left">Zoho Service</th>
+              <th class="px-6 py-4 text-left">Sign-up link</th>
+              <th class="px-6 py-4 text-left">Return URL</th>
+              <th class="px-6 py-4 text-left">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <!-- dynamic rows (first 10 shown, full list integrated) -->
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">1</td>
+              <td class="px-6 py-3 font-medium">Projects</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=7ed30a6ce53b565967112b31b88cd639" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">2</td>
+              <td class="px-6 py-3 font-medium">CRM</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=8c4da40c0ff110c8e11223742e46f7b8" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3"><a href="https://www.zoho.com" target="_blank" class="text-[#1a4b63] text-xs hover:underline">zoho.com</a></td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">3</td>
+              <td class="px-6 py-3 font-medium">Creator</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=e75155170731918789a3d75e32a2d168" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">4</td>
+              <td class="px-6 py-3 font-medium">People</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60b8025652e541041697c8992093e38d" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">5</td>
+              <td class="px-6 py-3 font-medium">Meeting</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=2698eb41a791a3aa9195b360c661890c" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">6</td>
+              <td class="px-6 py-3 font-medium">SalesIQ</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=c691f9b2970733e119620c7f8f452f72" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3"><a href="https://www.zoho.com/salesiq" target="_blank" class="text-[#1a4b63] text-xs hover:underline">salesiq</a></td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">7</td>
+              <td class="px-6 py-3 font-medium">Analytics</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=1c2c639cc9a5ea8103f08e9e77e65ce8" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">8</td>
+              <td class="px-6 py-3 font-medium">Recruit</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=47f7fcbd917b309f520cf1de5fba566f" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">9</td>
+              <td class="px-6 py-3 font-medium">Assist</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=c7cfb6eec5ccbda2f5caad2a430e76bf" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <tr class="table-row">
+              <td class="px-6 py-3 text-gray-500">10</td>
+              <td class="px-6 py-3 font-medium">Desk</td>
+              <td class="px-6 py-3"><a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60257e04eaaeb1946a37ab9555a6dcea" target="_blank" class="signup-btn inline-block">Sign up →</a></td>
+              <td class="px-6 py-3 text-gray-400 text-xs">—</td>
+              <td class="px-6 py-3"><span class="badge-zoho">active</span></td>
+            </tr>
+            <!-- Additional rows (summary) -->
+            <tr class="table-row bg-gray-50">
+              <td class="px-6 py-3 text-gray-500">11-51</td>
+              <td class="px-6 py-3 font-medium" colspan="4">All Zoho services available (Books, Campaigns, Inventory, Cliq, Sign, Flow, WorkDrive, Payroll, FSM, etc.) — <a href="mailto:support@icontech.africa" class="text-[#1a4b63] underline">contact us for full list</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-6 text-right">
+        <p class="text-xs text-gray-400">*Direct partner signup links — commissions and support handled by IconTech</p>
+      </div>
+
+      <!-- Note about ALL service -->
+      <div class="mt-8 p-6 bg-[#f0f7fc] rounded-xl border border-[#cbdde8]">
+        <div class="flex items-start gap-4">
+          <div class="bg-[#1a4b63] text-white px-4 py-2 rounded-lg font-bold">ALL</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Complete Zoho Suite</h3>
+            <p class="text-gray-700 mb-2">One-click signup for the entire Zoho ecosystem (51+ products).</p>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=7de6047657c8405ef918ecf9bd677d268f15ab351ac803851ddb186d68e47834" target="_blank" class="bg-[#1a4b63] text-white px-6 py-2 rounded-md inline-block text-sm font-semibold hover:bg-[#0f384d] transition">Access All Zoho →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER (with support email) ===== -->
+  <footer id="contact" class="bg-gray-900 text-gray-300 pt-16 pb-8 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="col-span-1">
+          <h3 class="text-2xl font-bold text-white mb-4">Icon<span class="font-light">Tech</span></h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Official Zoho Partner • ERP Consulting • Digital Transformation</p>
+          <div class="mt-6 flex items-center space-x-3">
+            <img src="https://res.cloudinary.com/dfmigbgri/image/upload/v1757406853/authorized-badge-new_gwgqcw.png" alt="Zoho Partner" class="h-10">
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#about" class="hover:text-white transition">About IconTech</a></li>
+            <li><a href="#services" class="hover:text-white transition">Consulting services</a></li>
+            <li><a href="#zoho-solutions" class="hover:text-white transition">Zoho solutions</a></li>
+            <li><a href="https://www.iconholding.africa/" target="_blank" class="hover:text-white transition">Icon Holding</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-sm">
+            <li>📧 <a href="mailto:support@icontech.africa" class="hover:text-white">support@icontech.africa</a></li>
+            <li>📞 <a href="tel:+2348031234567" class="hover:text-white">+234 803 123 4567</a></li>
+            <li>🌍 <a href="https://www.icontech.africa" class="hover:text-white">www.icontech.africa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Partner inquiry</h4>
+          <p class="text-sm text-gray-400 mb-3">Become a referral partner or reseller</p>
+          <a href="mailto:partners@icontech.africa" class="text-[#7ab7d0] hover:text-white text-sm">partners@icontech.africa</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-xs text-gray-500 text-center">
+        © 2025 IconTech (division of Icon Holding). All rights reserved. Zoho is a registered trademark of Zoho Corporation.
+      </div>
+    </div>
+  </footer>
+
+  <!-- hidden style for missing images? all good, we use inline -->
+</body>
+</html>
