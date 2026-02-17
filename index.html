@@ -36,8 +36,8 @@
     }
     
     .service-card:hover {
-      border-color: #1a4b63;
-      box-shadow: 0 20px 30px -15px rgba(26,75,99,0.12);
+      border-color: #1e4f47;
+      box-shadow: 0 20px 30px -15px rgba(30,79,71,0.12);
     }
     
     .zoho-card {
@@ -50,9 +50,9 @@
     }
     
     .zoho-card:hover {
-      border-color: #1a4b63;
+      border-color: #1e4f47;
       background-color: #fafdff;
-      box-shadow: 0 12px 25px -12px rgba(26,75,99,0.1);
+      box-shadow: 0 12px 25px -12px rgba(30,79,71,0.1);
     }
     
     /* Section title underline */
@@ -69,39 +69,69 @@
       left: 0;
       width: 70px;
       height: 3px;
-      background: #1a4b63;
+      background: #1e4f47;
       border-radius: 2px;
     }
     
     .btn-primary {
-      background-color: #1a4b63;
+      background-color: #1e4f47;
       color: white;
       transition: all 0.2s;
       display: inline-block;
     }
     
     .btn-primary:hover {
-      background-color: #0f384d;
+      background-color: #123731;
       transform: translateY(-1px);
-      box-shadow: 0 8px 16px -6px rgba(26,75,99,0.25);
+      box-shadow: 0 8px 16px -6px rgba(30,79,71,0.25);
+    }
+
+    .popular-badge {
+      background-color: #fbbf24;
+      color: #1e1e1e;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      display: inline-block;
     }
     
-    /* Mobile menu fixes */
+    /* Mobile menu */
     #mobile-menu {
-      transition: opacity 0.2s ease;
-    }
-    
-    #mobile-menu.hidden {
       display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 100;
     }
     
-    #mobile-menu:not(.hidden) {
+    #mobile-menu.active {
       display: block;
     }
     
-    /* Prevent body scroll when menu open */
-    body.menu-open {
+    .menu-open {
       overflow: hidden;
+    }
+    
+    /* Color updates */
+    .text-primary {
+      color: #1e4f47;
+    }
+    
+    .bg-primary {
+      background-color: #1e4f47;
+    }
+    
+    .border-primary {
+      border-color: #1e4f47;
+    }
+    
+    .hover\:text-primary:hover {
+      color: #1e4f47;
+    }
+    
+    .hover\:border-primary:hover {
+      border-color: #1e4f47;
     }
   </style>
 </head>
@@ -111,86 +141,92 @@
   <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 fixed w-full top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        <a href="/" class="text-2xl font-bold text-[#1a4b63] tracking-tight">Icon<span class="font-light text-gray-600">Tech</span></a>
-        <span class="hidden md:inline-block bg-[#e6f0f5] text-[#1a4b63] text-xs font-semibold px-3 py-1.5 rounded-full">Zoho Authorized Partner</span>
+        <a href="/" class="text-2xl font-bold text-[#1e4f47] tracking-tight">Icon<span class="font-light text-gray-600">Tech</span></a>
+        <span class="hidden md:inline-block bg-[#e6f0f5] text-[#1e4f47] text-xs font-semibold px-3 py-1.5 rounded-full">Zoho Authorized Partner</span>
       </div>
       
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700">
-        <a href="#about" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] py-1 transition">About</a>
-        <a href="#services" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] py-1 transition">Services</a>
-        <a href="#zoho-solutions" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] py-1 transition">Zoho Solutions</a>
-        <a href="#contact" class="hover:text-[#1a4b63] border-b-2 border-transparent hover:border-[#1a4b63] py-1 transition">Contact</a>
-        <a href="#zoho-solutions" class="ml-4 btn-primary px-5 py-2.5 rounded-md text-sm font-semibold shadow-sm">
+        <a href="#about" class="hover:text-[#1e4f47] border-b-2 border-transparent hover:border-[#1e4f47] py-1 transition">About</a>
+        <a href="#services" class="hover:text-[#1e4f47] border-b-2 border-transparent hover:border-[#1e4f47] py-1 transition">Services</a>
+        <a href="#zoho-solutions" class="hover:text-[#1e4f47] border-b-2 border-transparent hover:border-[#1e4f47] py-1 transition">Zoho Solutions</a>
+        <a href="#contact" class="hover:text-[#1e4f47] border-b-2 border-transparent hover:border-[#1e4f47] py-1 transition">Contact</a>
+        <a href="#zoho-solutions" class="ml-4 bg-[#1e4f47] text-white px-5 py-2.5 rounded-md text-sm font-semibold shadow-sm hover:bg-[#123731] transition">
           Partner Portal
         </a>
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-[#1a4b63] p-2 focus:outline-none" aria-label="Open menu">
+      <button id="mobile-menu-btn" class="md:hidden text-[#1e4f47] p-2 focus:outline-none" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
-
-    <!-- Mobile Drawer - Fixed positioning and interaction -->
-    <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/40 md:hidden">
-      <div class="absolute top-0 left-0 w-4/5 max-w-sm h-full bg-white shadow-xl overflow-y-auto">
-        <div class="sticky top-0 bg-white border-b border-gray-100 px-5 py-4 flex justify-between items-center">
-          <span class="text-xl font-bold text-[#1a4b63]">IconTech</span>
-          <button id="close-mobile-menu" class="text-gray-500 p-2 hover:text-[#1a4b63] focus:outline-none" aria-label="Close menu">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-        <nav class="flex flex-col px-5 py-6 space-y-1">
-          <a href="#about" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">About</a>
-          <a href="#services" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Services</a>
-          <a href="#zoho-solutions" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Zoho Solutions</a>
-          <a href="#contact" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Contact</a>
-          <div class="pt-4 mt-2 border-t border-gray-100">
-            <a href="#zoho-solutions" class="btn-primary px-4 py-3 rounded-lg text-center text-base font-medium w-full block">Partner Portal</a>
-          </div>
-        </nav>
-      </div>
-    </div>
   </header>
+
+  <!-- Mobile Menu Drawer (separate from header) -->
+  <div id="mobile-menu">
+    <div class="absolute top-0 right-0 w-4/5 max-w-sm h-full bg-white shadow-xl overflow-y-auto">
+      <div class="sticky top-0 bg-white border-b border-gray-100 px-5 py-4 flex justify-between items-center">
+        <span class="text-xl font-bold text-[#1e4f47]">IconTech</span>
+        <button id="close-mobile-menu" class="text-gray-500 p-2 hover:text-[#1e4f47] focus:outline-none" aria-label="Close menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col px-5 py-6 space-y-1">
+        <a href="#about" class="text-gray-700 hover:text-[#1e4f47] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">About</a>
+        <a href="#services" class="text-gray-700 hover:text-[#1e4f47] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Services</a>
+        <a href="#zoho-solutions" class="text-gray-700 hover:text-[#1e4f47] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Zoho Solutions</a>
+        <a href="#contact" class="text-gray-700 hover:text-[#1e4f47] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Contact</a>
+        <div class="pt-4 mt-2 border-t border-gray-100">
+          <a href="#zoho-solutions" class="bg-[#1e4f47] text-white px-4 py-3 rounded-lg text-center text-base font-medium w-full block hover:bg-[#123731] transition">Partner Portal</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
   <script>
     (function() {
-      const body = document.body;
-      const header = document.querySelector('header');
+      // Get elements
       const menu = document.getElementById('mobile-menu');
       const menuBtn = document.getElementById('mobile-menu-btn');
       const closeBtn = document.getElementById('close-mobile-menu');
+      const body = document.body;
       
-      // Toggle menu function
+      // Make sure elements exist
+      if (!menu || !menuBtn) return;
+      
+      // Open menu function
       function openMenu() {
-        menu.classList.remove('hidden');
+        menu.classList.add('active');
         body.classList.add('menu-open');
-        // Prevent body scroll
-        body.style.overflow = 'hidden';
       }
       
+      // Close menu function
       function closeMenu() {
-        menu.classList.add('hidden');
+        menu.classList.remove('active');
         body.classList.remove('menu-open');
-        body.style.overflow = '';
       }
       
-      // Event listeners
-      if (menuBtn) {
-        menuBtn.addEventListener('click', openMenu);
-      }
+      // Open button click
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openMenu();
+      });
       
+      // Close button click
       if (closeBtn) {
-        closeBtn.addEventListener('click', closeMenu);
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          closeMenu();
+        });
       }
       
-      // Close when clicking outside menu
-      menu?.addEventListener('click', function(e) {
+      // Close when clicking outside the menu drawer
+      menu.addEventListener('click', function(e) {
         if (e.target === menu) {
           closeMenu();
         }
@@ -198,13 +234,13 @@
       
       // Close on escape key
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+        if (e.key === 'Escape' && menu.classList.contains('active')) {
           closeMenu();
         }
       });
       
       // Close on link click
-      menu?.querySelectorAll('a').forEach(link => {
+      menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function() {
           closeMenu();
         });
@@ -212,7 +248,7 @@
       
       // Handle window resize - close menu on desktop
       window.addEventListener('resize', function() {
-        if (window.innerWidth >= 768 && menu && !menu.classList.contains('hidden')) {
+        if (window.innerWidth >= 768 && menu.classList.contains('active')) {
           closeMenu();
         }
       });
@@ -226,19 +262,19 @@
         <div>
           <div class="flex flex-wrap items-center gap-4 mb-6">
             <img src="https://res.cloudinary.com/dfmigbgri/image/upload/v1757406853/authorized-badge-new_gwgqcw.png" alt="Zoho Partner Badge" class="h-12 w-auto">
-            <span class="bg-[#1a4b63] text-white text-sm px-4 py-2 rounded-full font-medium shadow-sm">Official Partner since 2024</span>
+            <span class="bg-[#1e4f47] text-white text-sm px-4 py-2 rounded-full font-medium shadow-sm">Official Partner since 2024</span>
           </div>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Technology that<br><span class="text-[#1a4b63]">works for your business</span>
+            Technology that<br><span class="text-[#1e4f47]">works for your business</span>
           </h1>
           <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-lg">
             We implement Zoho solutions, build custom software, and guide your digital transformation. One partner, end to end expertise.
           </p>
           <div class="flex flex-wrap gap-4">
-            <a href="#zoho-solutions" class="btn-primary px-8 py-4 rounded-md font-semibold shadow-lg text-base">
+            <a href="#zoho-solutions" class="bg-[#1e4f47] text-white px-8 py-4 rounded-md font-semibold shadow-lg text-base hover:bg-[#123731] transition">
               Browse Zoho solutions
             </a>
-            <a href="#contact" class="border-2 border-[#1a4b63] text-[#1a4b63] px-8 py-4 rounded-md font-semibold hover:bg-[#1a4b63] hover:text-white transition">
+            <a href="#contact" class="border-2 border-[#1e4f47] text-[#1e4f47] px-8 py-4 rounded-md font-semibold hover:bg-[#1e4f47] hover:text-white transition">
               Talk to consultant
             </a>
           </div>
@@ -246,11 +282,11 @@
         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
           <div class="grid grid-cols-2 gap-4">
             <div class="bg-[#f5fafd] p-5 rounded-xl">
-              <p class="text-3xl font-bold text-[#1a4b63]">50+</p>
+              <p class="text-3xl font-bold text-[#1e4f47]">50+</p>
               <p class="text-sm text-gray-600">Zoho deployments</p>
             </div>
             <div class="bg-[#f5fafd] p-5 rounded-xl">
-              <p class="text-3xl font-bold text-[#1a4b63]">12+</p>
+              <p class="text-3xl font-bold text-[#1e4f47]">12+</p>
               <p class="text-sm text-gray-600">Certified consultants</p>
             </div>
             <div class="bg-[#f5fafd] p-5 rounded-xl col-span-2">
@@ -274,17 +310,17 @@
       </div>
       <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
         <div class="service-card p-6 md:p-8 rounded-2xl">
-          <div class="w-12 h-12 bg-[#e6f0f5] rounded-xl flex items-center justify-center text-[#1a4b63] text-2xl mb-5">🤝</div>
+          <div class="w-12 h-12 bg-[#e6f0f5] rounded-xl flex items-center justify-center text-[#1e4f47] text-2xl mb-5">🤝</div>
           <h3 class="font-bold text-xl mb-3">Zoho expertise</h3>
           <p class="text-gray-500 leading-relaxed text-sm md:text-base">Certified Zoho implementers with direct access to Zoho India. We do not just sell licenses. We set you up for success.</p>
         </div>
         <div class="service-card p-6 md:p-8 rounded-2xl">
-          <div class="w-12 h-12 bg-[#e6f0f5] rounded-xl flex items-center justify-center text-[#1a4b63] text-2xl mb-5">⚙️</div>
+          <div class="w-12 h-12 bg-[#e6f0f5] rounded-xl flex items-center justify-center text-[#1e4f47] text-2xl mb-5">⚙️</div>
           <h3 class="font-bold text-xl mb-3">Custom development</h3>
           <p class="text-gray-500 leading-relaxed text-sm md:text-base">When off the shelf is not enough, we build integrations, custom modules, and complete ERP solutions.</p>
         </div>
         <div class="service-card p-6 md:p-8 rounded-2xl">
-          <div class="w-12 h-12 bg-[#e6f0f5] rounded-xl flex items-center justify-center text-[#1a4b63] text-2xl mb-5">🌍</div>
+          <div class="w-12 h-12 bg-[#e6f0f5] rounded-xl flex items-center justify-center text-[#1e4f47] text-2xl mb-5">🌍</div>
           <h3 class="font-bold text-xl mb-3">Local knowledge</h3>
           <p class="text-gray-500 leading-relaxed text-sm md:text-base">We understand African business challenges, tax regulations, and market realities. No cookie cutter approach.</p>
         </div>
@@ -302,7 +338,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         <!-- Service 1 -->
         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-          <span class="text-[#1a4b63] text-xs font-semibold uppercase tracking-wide">Consulting</span>
+          <span class="text-[#1e4f47] text-xs font-semibold uppercase tracking-wide">Consulting</span>
           <h3 class="text-2xl font-bold mt-2 mb-4">ERP advisory</h3>
           <p class="text-gray-600 mb-6 text-sm md:text-base">We help you choose and implement the right ERP. Zoho, Odoo, Microsoft Dynamics, or custom built. Process mapping, vendor selection, migration strategy.</p>
           <ul class="space-y-3 text-gray-500 text-sm">
@@ -313,7 +349,7 @@
         </div>
         <!-- Service 2 -->
         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-          <span class="text-[#1a4b63] text-xs font-semibold uppercase tracking-wide">Development</span>
+          <span class="text-[#1e4f47] text-xs font-semibold uppercase tracking-wide">Development</span>
           <h3 class="text-2xl font-bold mt-2 mb-4">Custom software</h3>
           <p class="text-gray-600 mb-6 text-sm md:text-base">Need something unique? We build web apps, APIs, mobile solutions, and integrations using modern stacks.</p>
           <ul class="space-y-3 text-gray-500 text-sm">
@@ -324,7 +360,7 @@
         </div>
         <!-- Service 3 -->
         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all md:col-span-2 lg:col-span-1">
-          <span class="text-[#1a4b63] text-xs font-semibold uppercase tracking-wide">Automation</span>
+          <span class="text-[#1e4f47] text-xs font-semibold uppercase tracking-wide">Automation</span>
           <h3 class="text-2xl font-bold mt-2 mb-4">Digital transformation</h3>
           <p class="text-gray-600 mb-6 text-sm md:text-base">Streamline operations with workflow automation, business intelligence, and change management.</p>
           <ul class="space-y-3 text-gray-500 text-sm">
@@ -349,11 +385,11 @@
       <div class="mb-12 bg-gradient-to-r from-[#f0f7fc] to-white p-6 md:p-8 rounded-2xl border border-[#cbdde8]">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <span class="bg-[#1a4b63] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-3 inline-block">Complete suite</span>
+            <span class="bg-[#1e4f47] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-3 inline-block">Complete suite</span>
             <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Access all 50+ Zoho apps</h3>
             <p class="text-gray-600 max-w-2xl text-sm md:text-base">One click gives you access to the entire Zoho ecosystem. CRM, Books, People, Creator, and more. We help you set up the ones you need.</p>
           </div>
-          <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=7de6047657c8405ef918ecf9bd677d268f15ab351ac803851ddb186d68e47834" target="_blank" class="btn-primary px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-center whitespace-nowrap shadow-lg text-sm md:text-base">
+          <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=7de6047657c8405ef918ecf9bd677d268f15ab351ac803851ddb186d68e47834" target="_blank" class="bg-[#1e4f47] text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-center whitespace-nowrap shadow-lg text-sm md:text-base hover:bg-[#123731] transition">
             Activate all Zoho
           </a>
         </div>
@@ -365,122 +401,148 @@
         <div class="zoho-card rounded-xl p-5 md:p-6">
           <div class="flex items-start justify-between mb-3">
             <h3 class="font-bold text-lg md:text-xl text-gray-900">CRM</h3>
-            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">popular</span>
+            <span class="popular-badge">popular</span>
           </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Complete customer relationship management. Sales pipeline, contact management, analytics. Ideal for sales driven teams.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=8c4da40c0ff110c8e11223742e46f7b8" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=8c4da40c0ff110c8e11223742e46f7b8" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Books -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Books</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Books</h3>
+            <span class="popular-badge">popular</span>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Cloud accounting software. Invoicing, expense tracking, GST compliance, and financial reports for African businesses.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=5fb8e17e34d6e1b53433dfa458072929" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=5fb8e17e34d6e1b53433dfa458072929" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- People -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">People</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">People</h3>
+            <span class="popular-badge">popular</span>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">HR management system. Employee records, leave tracking, performance reviews, and payroll integration.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60b8025652e541041697c8992093e38d" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60b8025652e541041697c8992093e38d" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Creator -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Creator</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Creator</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Low code platform to build custom applications. Inventory apps, approval systems, field data collection.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=e75155170731918789a3d75e32a2d168" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=e75155170731918789a3d75e32a2d168" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Inventory -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Inventory</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Inventory</h3>
+            <span class="popular-badge">popular</span>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Stock management, order fulfillment, warehouse tracking. Syncs with Books and CRM.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=782ec5396b8cfeffc700669f8cd718a3" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=782ec5396b8cfeffc700669f8cd718a3" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Projects -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Projects</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Projects</h3>
+            <span class="popular-badge">popular</span>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Project planning, task tracking, timesheets, and collaboration for teams of any size.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=7ed30a6ce53b565967112b31b88cd639" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=7ed30a6ce53b565967112b31b88cd639" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Desk -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Desk</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Desk</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Customer support platform. Ticketing, knowledge base, multi channel support.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60257e04eaaeb1946a37ab9555a6dcea" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60257e04eaaeb1946a37ab9555a6dcea" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Analytics -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Analytics</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Analytics</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Business intelligence and data visualization. Create dashboards, blend data from multiple sources.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=1c2c639cc9a5ea8103f08e9e77e65ce8" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=1c2c639cc9a5ea8103f08e9e77e65ce8" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- WorkDrive -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">WorkDrive</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">WorkDrive</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Team file storage and collaboration. Secure cloud storage with team folders and sharing controls.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=289e6de6fc26f5378797a3b90f283171" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=289e6de6fc26f5378797a3b90f283171" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Campaigns -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Campaigns</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Campaigns</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Email marketing automation. Newsletters, drip campaigns, and subscriber management.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=ed934b24c8fc9be285acbf05a1072662" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=ed934b24c8fc9be285acbf05a1072662" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Cliq -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Cliq</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Cliq</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Team messaging and collaboration. Channels, direct messages, audio and video calls.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=ddf21e1e10bea9cc7dc8832cab0458ea" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=ddf21e1e10bea9cc7dc8832cab0458ea" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
 
         <!-- Sign -->
         <div class="zoho-card rounded-xl p-5 md:p-6">
-          <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-3">Sign</h3>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-bold text-lg md:text-xl text-gray-900">Sign</h3>
+          </div>
           <p class="text-gray-500 text-sm mb-4 flex-grow">Legal e signatures. Send documents for signing, track status, maintain audit trails.</p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-xs text-gray-400">Partner signup</span>
-            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60ed14f4eb067f1c531c56e85859c4f7" target="_blank" class="bg-[#1a4b63] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#0f384d] transition">Sign up</a>
+            <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=60ed14f4eb067f1c531c56e85859c4f7" target="_blank" class="bg-[#1e4f47] text-white px-4 py-2 rounded-md text-xs md:text-sm font-medium hover:bg-[#123731] transition">Sign up</a>
           </div>
         </div>
       </div>
@@ -491,7 +553,7 @@
           Plus 30 more Zoho products. Recruit, Expense, CRM Plus, Sprints, FinancePlus, Checkout, Flow, People Plus, BackStage, PageSense, Commerce, Marketing Automation, Workerly, Bigin, Voice, Payroll, Lens, Remotely, FSM, Directory and more.
         </p>
         <p class="text-sm text-gray-500">
-          All available through our partner portal. <a href="mailto:support@icontech.africa" class="text-[#1a4b63] font-medium hover:underline">Contact us</a> for any specific product.
+          All available through our partner portal. <a href="mailto:support@icontech.africa" class="text-[#1e4f47] font-medium hover:underline">Contact us</a> for any specific product.
         </p>
       </div>
     </div>
@@ -517,4 +579,22 @@
         </div>
         <div>
           <h4 class="text-white font-semibold mb-4">Support</h4>
-          <ul class="space-y-2 text
+          <ul class="space-y-2 text-sm">
+            <li><a href="mailto:support@icontech.africa" class="text-gray-400 hover:text-white transition">support@icontech.africa</a></li>
+            <li><a href="tel:+2348031234567" class="text-gray-400 hover:text-white transition">+234 803 123 4567</a></li>
+            <li><span class="text-gray-400">www.icontech.africa</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Partner inquiry</h4>
+          <p class="text-sm text-gray-400 mb-2">Become a reseller or referral partner</p>
+          <a href="mailto:partners@icontech.africa" class="text-[#7ab7d0] hover:text-white transition">partners@icontech.africa</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-xs text-gray-500 text-center">
+        <p>2025 IconTech (division of Icon Holding). All rights reserved. Zoho is a registered trademark of Zoho Corporation.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
