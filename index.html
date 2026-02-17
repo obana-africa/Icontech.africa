@@ -86,12 +86,22 @@
       box-shadow: 0 8px 16px -6px rgba(26,75,99,0.25);
     }
     
-    /* Responsive adjustments */
-    @media (max-width: 640px) {
-      .container-px {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-      }
+    /* Mobile menu fixes */
+    #mobile-menu {
+      transition: opacity 0.2s ease;
+    }
+    
+    #mobile-menu.hidden {
+      display: none;
+    }
+    
+    #mobile-menu:not(.hidden) {
+      display: block;
+    }
+    
+    /* Prevent body scroll when menu open */
+    body.menu-open {
+      overflow: hidden;
     }
   </style>
 </head>
@@ -117,68 +127,94 @@
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-[#1a4b63] p-2" aria-label="Open menu">
+      <button id="mobile-menu-btn" class="md:hidden text-[#1a4b63] p-2 focus:outline-none" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/30 z-50 hidden">
-      <div class="absolute top-0 left-0 w-4/5 max-w-xs h-full bg-white shadow-xl">
-        <div class="flex justify-between items-center px-5 py-4 border-b border-gray-100">
+    <!-- Mobile Drawer - Fixed positioning and interaction -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black/40 md:hidden">
+      <div class="absolute top-0 left-0 w-4/5 max-w-sm h-full bg-white shadow-xl overflow-y-auto">
+        <div class="sticky top-0 bg-white border-b border-gray-100 px-5 py-4 flex justify-between items-center">
           <span class="text-xl font-bold text-[#1a4b63]">IconTech</span>
-          <button id="close-mobile-menu" class="text-gray-500 p-2" aria-label="Close menu">
+          <button id="close-mobile-menu" class="text-gray-500 p-2 hover:text-[#1a4b63] focus:outline-none" aria-label="Close menu">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
         </div>
-        <nav class="flex flex-col px-5 py-6 space-y-4">
-          <a href="#about" class="text-gray-700 hover:text-[#1a4b63] py-2 text-base font-medium">About</a>
-          <a href="#services" class="text-gray-700 hover:text-[#1a4b63] py-2 text-base font-medium">Services</a>
-          <a href="#zoho-solutions" class="text-gray-700 hover:text-[#1a4b63] py-2 text-base font-medium">Zoho Solutions</a>
-          <a href="#contact" class="text-gray-700 hover:text-[#1a4b63] py-2 text-base font-medium">Contact</a>
-          <a href="#zoho-solutions" class="btn-primary px-4 py-3 rounded-md text-center mt-4 text-base">Partner Portal</a>
+        <nav class="flex flex-col px-5 py-6 space-y-1">
+          <a href="#about" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">About</a>
+          <a href="#services" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Services</a>
+          <a href="#zoho-solutions" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Zoho Solutions</a>
+          <a href="#contact" class="text-gray-700 hover:text-[#1a4b63] hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-colors">Contact</a>
+          <div class="pt-4 mt-2 border-t border-gray-100">
+            <a href="#zoho-solutions" class="btn-primary px-4 py-3 rounded-lg text-center text-base font-medium w-full block">Partner Portal</a>
+          </div>
         </nav>
       </div>
     </div>
   </header>
 
   <script>
-    (function(){
-      const btn = document.getElementById('mobile-menu-btn');
+    (function() {
+      const body = document.body;
+      const header = document.querySelector('header');
       const menu = document.getElementById('mobile-menu');
+      const menuBtn = document.getElementById('mobile-menu-btn');
       const closeBtn = document.getElementById('close-mobile-menu');
       
-      if (btn) {
-        btn.onclick = function() {
-          menu.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
-        };
+      // Toggle menu function
+      function openMenu() {
+        menu.classList.remove('hidden');
+        body.classList.add('menu-open');
+        // Prevent body scroll
+        body.style.overflow = 'hidden';
+      }
+      
+      function closeMenu() {
+        menu.classList.add('hidden');
+        body.classList.remove('menu-open');
+        body.style.overflow = '';
+      }
+      
+      // Event listeners
+      if (menuBtn) {
+        menuBtn.addEventListener('click', openMenu);
       }
       
       if (closeBtn) {
-        closeBtn.onclick = function() {
-          menu.classList.add('hidden');
-          document.body.style.overflow = '';
-        };
+        closeBtn.addEventListener('click', closeMenu);
       }
       
+      // Close when clicking outside menu
       menu?.addEventListener('click', function(e) {
         if (e.target === menu) {
-          menu.classList.add('hidden');
-          document.body.style.overflow = '';
+          closeMenu();
+        }
+      });
+      
+      // Close on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+          closeMenu();
         }
       });
       
       // Close on link click
       menu?.querySelectorAll('a').forEach(link => {
-        link.onclick = function() {
-          menu.classList.add('hidden');
-          document.body.style.overflow = '';
-        };
+        link.addEventListener('click', function() {
+          closeMenu();
+        });
+      });
+      
+      // Handle window resize - close menu on desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768 && menu && !menu.classList.contains('hidden')) {
+          closeMenu();
+        }
       });
     })();
   </script>
@@ -190,7 +226,7 @@
         <div>
           <div class="flex flex-wrap items-center gap-4 mb-6">
             <img src="https://res.cloudinary.com/dfmigbgri/image/upload/v1757406853/authorized-badge-new_gwgqcw.png" alt="Zoho Partner Badge" class="h-12 w-auto">
-            <span class="bg-[#1a4b63] text-white text-sm px-4 py-2 rounded-full font-medium shadow-sm">Official Partner since 2020</span>
+            <span class="bg-[#1a4b63] text-white text-sm px-4 py-2 rounded-full font-medium shadow-sm">Official Partner since 2024</span>
           </div>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
             Technology that<br><span class="text-[#1a4b63]">works for your business</span>
@@ -481,22 +517,4 @@
         </div>
         <div>
           <h4 class="text-white font-semibold mb-4">Support</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="mailto:support@icontech.africa" class="text-gray-400 hover:text-white transition">support@icontech.africa</a></li>
-            <li><a href="tel:+2348031234567" class="text-gray-400 hover:text-white transition">+234 803 123 4567</a></li>
-            <li><span class="text-gray-400">www.icontech.africa</span></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-semibold mb-4">Partner inquiry</h4>
-          <p class="text-sm text-gray-400 mb-2">Become a reseller or referral partner</p>
-          <a href="mailto:partners@icontech.africa" class="text-[#7ab7d0] hover:text-white transition">partners@icontech.africa</a>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 pt-6 text-xs text-gray-500 text-center">
-        <p>2025 IconTech (division of Icon Holding). All rights reserved. Zoho is a registered trademark of Zoho Corporation.</p>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+          <ul class="space-y-2 text
